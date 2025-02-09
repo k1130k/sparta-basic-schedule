@@ -44,7 +44,7 @@ public class ScheduleService {
         return  new ScheduleResponseDto(schedule.getId(), schedule.getContent());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public ScheduleResponseDto update(Long id, ScheduleRequestDto dto) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 id에 맞는 메모가 업습니다.")
@@ -54,7 +54,7 @@ public class ScheduleService {
         return  new ScheduleResponseDto(schedule.getId(), schedule.getContent());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void deleteById(Long id) {
         if (!scheduleRepository.existsById(id)) {
             throw new IllegalArgumentException("없슈 ㅅㄱ");
