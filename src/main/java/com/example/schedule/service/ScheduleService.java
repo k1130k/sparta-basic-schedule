@@ -39,7 +39,7 @@ public class ScheduleService {
     @Transactional(readOnly = true)
     public ScheduleResponseDto fineById(Long id) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("스케쥴이 없슈")
+                () -> new IllegalArgumentException("스케줄이 없슈")
         );
         return  new ScheduleResponseDto(schedule.getId(), schedule.getContent());
     }
@@ -47,7 +47,7 @@ public class ScheduleService {
     @Transactional
     public ScheduleResponseDto update(Long id, ScheduleRequestDto dto) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("스케쥴이 없슈")
+                () -> new IllegalArgumentException("스케줄이 없슈")
         );
 
         schedule.update(dto.getContent());
@@ -57,7 +57,7 @@ public class ScheduleService {
     @Transactional
     public void deleteById(Long id) {
         if (!scheduleRepository.existsById(id)) {
-            throw new IllegalArgumentException("없슈 ㅅㄱ");
+            throw new IllegalArgumentException("삭제할 스케줄이 없슈 ㅅㄱ");
         }
         scheduleRepository.deleteById(id);
     }
